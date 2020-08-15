@@ -10,3 +10,5 @@ new Vue({
   },
   template: '<App/>'
 })
+
+console1.log(1)

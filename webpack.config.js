@@ -8,10 +8,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 //打包前删除dist目录的插件
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 
+//导入热模块用的
+const webpack = require('webpack')
+
 module.exports = {
   //环境设置
   // mode:'production', //空格什么的没有了
   mode: 'development', //开发时使用
+  //sourceMap
+  devtool: 'cheap-module-eval-source-map',
   //打包入口文件
   entry: './src/main.js',
   //打包出口文件
@@ -50,7 +55,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './index.html' //以当前目录的index.html为模板
     }),
-    new CleanWebpackPlugin()
+    new CleanWebpackPlugin(),
+    new webpack.HotModuleReplacementPlugin()
   ],
   //添加别名，因为Vue默认导出的是 vue.common.js,
   resolve: {
@@ -63,6 +69,8 @@ module.exports = {
     // 指定服务器根目录
     contentBase: './dist',
     // 自动打开浏览器
-    open: true
-  },
+    open: true,
+    // 启用热模块替换
+    hot: true,
+  }
 }
