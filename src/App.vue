@@ -1,6 +1,7 @@
 <template>
   <div>
     this is app
+    <h1>测试</h1>
   </div>
 </template>
 
@@ -18,5 +19,7 @@ import './assets/styles/global.styl'
 </script>
 
 <style scoped>
-
+h1{
+  color:blue;
+}
 </style>

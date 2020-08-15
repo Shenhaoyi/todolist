@@ -36,7 +36,7 @@ module.exports = {
       },
       {
         test: /\.styl(us)?$/,  //styl结尾或者stylus结尾
-        use: ['style-loader', 'css-loader', 'stylus-loader'] //stylus先加载成css
+        use: ['vue-style-loader', 'css-loader', 'stylus-loader'] //stylus先加载成css
       },
     ]
   },
