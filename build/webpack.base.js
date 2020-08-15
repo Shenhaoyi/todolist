@@ -38,7 +38,19 @@ module.exports = {
       },
       {
         test: /\.styl(us)?$/,  //styl结尾或者stylus结尾
-        use: ['vue-style-loader', 'css-loader', 'stylus-loader'] //stylus先加载成css
+        use: ['vue-style-loader',
+          'css-loader',
+          'postcss-loader',
+          'stylus-loader'] //stylus先加载成css
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          'style-loader',
+          'css-loader',
+          'postcss-loader',
+          'sass-loader',
+        ],//sass先加载成css
       },
       {
         test: /\.js$/,
@@ -58,7 +70,10 @@ module.exports = {
   //添加别名，因为Vue默认导出的是 vue.common.js,
   resolve: {
     alias: {
-      'vue': 'vue/dist/vue.js' //from 'vue' 相当于右边的
+      'vue': 'vue/dist/vue.js', //from 'vue' 相当于右边的
+      '@': path.resolve(__dirname, '../src'), //src
+      'styles': path.resolve(__dirname, '../src/assets/styles'),
+      'images': path.resolve(__dirname, '../src/assets/images')
     }
   },
 }
