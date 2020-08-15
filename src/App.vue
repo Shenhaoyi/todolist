@@ -8,8 +8,7 @@
 <script>
   // import img from './assets/images/xiaohei.jpg'
 
-  import './assets/styles/test.css';
-  import './assets/styles/global.styl';
+  import './assets/styles/reset.css';
 
   export default {
     name: 'App',
