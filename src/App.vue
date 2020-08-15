@@ -38,6 +38,6 @@
 
 <style scoped>
 li{
-  color:red;
+  color:blue;
 }
 </style>

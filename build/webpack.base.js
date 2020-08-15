@@ -8,21 +8,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 //打包前删除dist目录的插件
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 
-//导入热模块用的
-const webpack = require('webpack')
 
 module.exports = {
-  //环境设置
-  // mode:'production', //空格什么的没有了
-  mode: 'development', //开发时使用
-  //sourceMap
-  devtool: 'cheap-module-eval-source-map',
   //打包入口文件
   entry: './src/main.js',
   //打包出口文件
   output: {
     filename: 'main.js',
-    path: path.resolve(__dirname, 'dist')  //当前目录下的绝对路径下的dist文件,打包成的文件的bundle.js
+    path: path.resolve(__dirname, '../dist')  //当前目录下的绝对路径下的dist文件,打包成的文件的bundle.js
   },
   //打包规则
   module: {
@@ -47,6 +40,11 @@ module.exports = {
         test: /\.styl(us)?$/,  //styl结尾或者stylus结尾
         use: ['vue-style-loader', 'css-loader', 'stylus-loader'] //stylus先加载成css
       },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,//排除node_modules中的文件
+        loader: 'babel-loader'
+      }
     ]
   },
   //配置插件
@@ -56,7 +54,6 @@ module.exports = {
       template: './index.html' //以当前目录的index.html为模板
     }),
     new CleanWebpackPlugin(),
-    new webpack.HotModuleReplacementPlugin()
   ],
   //添加别名，因为Vue默认导出的是 vue.common.js,
   resolve: {
@@ -64,13 +61,4 @@ module.exports = {
       'vue': 'vue/dist/vue.js' //from 'vue' 相当于右边的
     }
   },
-  // devServer配置
-  devServer: {
-    // 指定服务器根目录
-    contentBase: './dist',
-    // 自动打开浏览器
-    open: true,
-    // 启用热模块替换
-    hot: true,
-  }
 }
