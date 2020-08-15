@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import App from './App'
+import App from './App.vue'
 
 //创建vue实例，
 new Vue({

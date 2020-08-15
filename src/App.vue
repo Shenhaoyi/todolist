@@ -5,9 +5,15 @@
 </template>
 
 <script>
+// import img from './assets/images/xiaohei.jpg'
+import './assets/styles/test.css'
+import './assets/styles/global.styl'
 
   export default {
-    name: 'App'
+    name: 'App',
+    // created() {
+    //   console.log(img)
+    // }
   }
 </script>
 
