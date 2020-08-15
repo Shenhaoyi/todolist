@@ -6,9 +6,10 @@
 </template>
 
 <script>
-// import img from './assets/images/xiaohei.jpg'
-import './assets/styles/test.css'
-import './assets/styles/global.styl'
+  // import img from './assets/images/xiaohei.jpg'
+
+  import './assets/styles/test.css';
+  import './assets/styles/global.styl';
 
   export default {
     name: 'App',
@@ -19,7 +20,8 @@ import './assets/styles/global.styl'
 </script>
 
 <style scoped>
-h1{
-  color:blue;
-}
+
+  h1 {
+    color: blue;
+  }
 </style>

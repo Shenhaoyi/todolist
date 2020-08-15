@@ -1,8 +1,13 @@
 //导入path模块，用以获取绝对路径
+
+
 const path = require('path')
 
 // 引入 vue-loader的插件
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const {VueLoaderPlugin} = require('vue-loader')
+//在dist中创建html
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+
 
 module.exports = {
   //环境设置
@@ -42,7 +47,10 @@ module.exports = {
   },
   //配置插件
   plugins: [
-    new VueLoaderPlugin() //实例化对象
+    new VueLoaderPlugin(), //实例化对象
+    new HtmlWebpackPlugin({
+      template: './index.html' //以当前目录的index.html为模板
+    })
   ],
   //添加别名，因为Vue默认导出的是 vue.common.js,
   resolve: {
