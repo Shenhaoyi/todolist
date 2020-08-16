@@ -13,6 +13,15 @@
   import MainTodo from './components/MainTodo/MainTodo.vue'
 
   export default {
+    data(){
+      return {
+        todoData:[{
+          id:0,
+          content:'test',
+          completed:false
+        }]
+      }
+    },
     name: 'App',
     components: {MainTodo, MainHeader},
     // components: {MainHeader},

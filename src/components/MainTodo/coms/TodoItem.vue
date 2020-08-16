@@ -1,21 +1,28 @@
 <template>
-  <div class="todo-item">
+  <div class=todo-item>
     <label>
-      <input type="checkbox">
-      todo1
+      <input type="checkbox" v-model="todo.completed">
+      <span :class="todo.completed?'completed':''">{{todo.content}}</span>
     </label>
-    <button></button>
+    <button @click="delItem"></button>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'TodoItem'
+    name: 'TodoItem',
+    props:{todo:Object},
+    methods:{
+      delItem(){
+        this.$emit('del', this.todo.id)
+      }
+    }
   }
 </script>
 
 <style lang="scss" scoped>
   @import '../../../assets/styles/theme.scss';
+
   .todo-item {
     display: flex;
     justify-content: space-between;
@@ -24,39 +31,33 @@
     padding: 10px;
     font-size: 24px;
 
-    &:hover{
-      button:after{
-        content:'x';
+    &:hover {
+      button:after {
+        content: 'x';
         font-size: 24px;
-        color:$lightred;
+        color: $lightred;
       }
     }
 
-
-    label{
+    label {
+      border: 1px solid red;
       display: flex;
       justify-content: center;
       align-items: center;
-      /*text-decoration: line-through;*/
-      /*transition:color 0.4s;*/
 
+      span.completed {
+        color: #d9d9d9;
+        text-decoration: line-through;
+      }
 
-
-      input{
+      input {
         width: 50px;
         height: 30px;
         appearance: none;
-        outline:none;
-        border:none;
+        outline: none;
+        border: none;
         text-align: center;
-        cursor:pointer;
-        &.completed{
-          label{
-            color: #d9d9d9;
-            text-decoration: line-through;
-          }
-        }
-
+        cursor: pointer;
 
         &:after {
           content: url("../../../assets/images/yuan.svg");
@@ -67,13 +68,14 @@
         }
       }
     }
-    button{
-      width:40px;
+
+    button {
+      width: 40px;
       background: transparent;
       appearance: none;
       border: none;
       outline: none;
-      cursor:pointer;
+      cursor: pointer;
     }
   }
 </style>

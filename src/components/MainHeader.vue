@@ -14,7 +14,7 @@
   @import '../assets/styles/theme.scss';
 
   .main-header {
-    border: 1px solid;
+    margin-top:50px;
     text-align: center; //文字直接居中了
     h1 {
       margin: 20px;
