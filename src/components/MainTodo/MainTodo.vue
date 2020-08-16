@@ -10,7 +10,7 @@
       >
       <button class="add-todo" @click="addTodo">Add</button>
     </label>
-    <todo-item v-for="(data,index) in filterData" :ket="index" :todo="data" @del="handleDeleteItem"></todo-item>
+    <todo-item v-for="(data,index) in filterData" :key="index" :todo="data" @del="handleDeleteItem"></todo-item>
     <todo-info :total="total" @toggleState="handleToggleState" @clearCompleted="handleClear"></todo-info>
   </div>
 </template>
@@ -45,7 +45,15 @@
       }
 
     },
-    watch: {},
+    created: function () {
+      this.todoData = JSON.parse(window.localStorage.getItem('todoList') || [])
+    },
+    watch: {
+      deep: true,
+      todoData: function () {
+        window.localStorage.setItem('todoList', JSON.stringify(this ? this.todoData : []))
+      }
+    },
     methods: {
       addTodo() {
         if (this.content.length > 0) {
@@ -88,10 +96,10 @@
     label {
       display: flex;
       justify-content: space-between;
-      padding-left:20px;
+      padding-left: 20px;
 
       .input-todo {
-        flex:1;
+        flex: 1;
         padding: 16px 16px 16px 32px;
         font-size: 24px;
         font-weight: inherit;
@@ -106,7 +114,7 @@
       .add-todo {
         min-width: 100px;
         background: $yellow;
-        margin:5px 10px;
+        margin: 5px 10px;
         border-radius: 10px;
         appearance: none;
         border: none;
