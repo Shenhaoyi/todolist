@@ -4,6 +4,7 @@
 
     </MainHeader>
     <main-todo></main-todo>
+    <main-footer></main-footer>
   </div>
 </template>
 
@@ -11,6 +12,7 @@
   import './assets/styles/global.scss'
   import MainHeader from './components/MainHeader.vue'
   import MainTodo from './components/MainTodo/MainTodo.vue'
+  import MainFooter from './components/MainFooter.vue'
 
   export default {
     data(){
@@ -23,7 +25,7 @@
       }
     },
     name: 'App',
-    components: {MainTodo, MainHeader},
+    components: {MainFooter, MainTodo, MainHeader},
     // components: {MainHeader},
   }
 </script>
